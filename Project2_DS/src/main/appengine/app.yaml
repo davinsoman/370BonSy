@@ -1,0 +1,19 @@
+runtime: java21
+env: standard
+runtime_config:
+  jdk: openjdk21
+service: default
+instance_class: F2
+env_variables:
+  CLOUD_SQL_CONNECTION_NAME: "nimble-alpha-456322-s9:us-east1:mysql-instance"
+  DB_USER: "client"
+  DB_PASS: "cs370bonsy"
+  DB_NAME: "cs370assn"
+
+entrypoint: 'java -cp "*:/app" org.eclipse.jetty.runner.Runner /app/CS370S25_soman_davin.war'
+
+handlers:
+- url: /.*  
+  script: auto
+beta_settings:
+  cloud_sql_instances: "nimble-alpha-456322-s9:us-east1:mysql-instance"
